@@ -1,0 +1,11 @@
+.contents {
+  p {
+    @apply mb-2;
+  }
+  a {
+    @apply text-primary underline;
+  }
+  code {
+    @apply bg-base-300 mx-2 px-1;
+  }
+}

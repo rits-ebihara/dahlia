@@ -1,0 +1,38 @@
+{
+  // "jest.autoRun": "on",
+  "editor.formatOnSave": true,
+  "jest.jestCommandLine": "yarn test",
+  "jest.disabledWorkspaceFolders": [
+    "root",
+    "models"
+  ],
+  "codemetrics.basics.ComplexityLevelExtremeDescription": "これ、あかんやつやー💀",
+  "codemetrics.basics.ComplexityLevelHighDescription": "だめだこいつ早くなんとかしないと😰",
+  "codemetrics.basics.ComplexityLevelLowDescription": "良いコード！👍",
+  "codemetrics.basics.ComplexityLevelNormalDescription": "もうちょい！😐",
+  "codemetrics.basics.ComplexityTemplate": "複雑度: {0} {1}",
+  "codemetrics.basics.DiagnosticsEnabled": true,
+  "codemetrics.nodeconfiguration.ArrowFunction": 0,
+  "codemetrics.nodeconfiguration.ReturnStatement": 0,
+  "codemetrics.basics.CodeLensHiddenUnder": 0,
+  "codemetrics.nodeconfiguration.ThrowStatement": 0,
+  "codemetrics.nodeconfiguration.JsxElement": 0,
+  "codemetrics.nodeconfiguration.JsxSelfClosingElement": 0,
+  "cSpell.words": [
+    "daygrid",
+    "Firestore",
+    "fullcalendar",
+    "timegrid"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "classNames\\(([^)]*)\\)",
+      "['\"]([^'\"]*)['\"]"
+    ],
+    [
+      "createStyle\\(([^}]*)\\}\\)\\);",
+      "['\"`]([^'\"`\\]]*)['\"`]",
+    ]
+  ],
+  "terminal.integrated.fontFamily": "MesloLGS NF"
+}

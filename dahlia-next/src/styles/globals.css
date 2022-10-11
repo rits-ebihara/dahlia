@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dahlia-btn.btn-xs span {
+  font-size: 0.75rem;
+}
+
+.dahlia-btn.btn-sm span {
+  font-size: 0.875rem;
+}
+
+.dahlia-btn.btn-md span {
+  font-size: 0.875rem;
+}
+
+.dahlia-btn.btn-lg span {
+  font-size: 1.125rem;
+}
+
+.dahlia-btn.btn svg {
+  font-size: 1.25em;
+}
+
+.dahlia-btn.btn svg:first-child {
+  margin-right: 0.5rem;
+}
+
+.dahlia-btn.btn svg:last-child {
+  margin-left: 0.5rem;
+}
+
+.dahlia.label {
+  padding: 0;
+}
