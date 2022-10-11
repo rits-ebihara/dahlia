@@ -1,0 +1,13 @@
+{
+  "name": "@rits-ebihara/dahlia",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rits-ebihara/dahlia.git",
+  "author": "EBIHARA Kenji <kenji.ebihara@jp.ricoh.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "": ""
+}

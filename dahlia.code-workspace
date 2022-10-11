@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "dahlia-next"
+			"path": "packages/dahlia-next"
 		},
 		{
-			"path": "dahlia-ui",
+			"path": "packages/dahlia-ui",
 			"name": "UI"
 		},
 		{
