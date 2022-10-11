@@ -1,5 +1,5 @@
 /**
- * @jest-environment jsdom
+ * @jest-environment jest-environment-jsdom
  */
 import '@testing-library/jest-dom';
 import { fireEvent, render as _render, screen } from '@testing-library/react';

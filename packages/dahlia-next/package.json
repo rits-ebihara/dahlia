@@ -2,7 +2,7 @@
   "name": "@rits-ebihara/dahlia-next",
   "version": "0.1.0",
   "private": true,
-  "license": "MIT",
+  "license": "CC-BY-SA-4.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:rits-ebihara/dahlia-next.git"
