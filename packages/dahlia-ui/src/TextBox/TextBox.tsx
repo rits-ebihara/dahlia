@@ -43,8 +43,6 @@ export const TextBox: React.FC<Props> = props => {
     ...rest
   } = props;
 
-  console.log(inputProps);
-
   const id = useId();
 
   const _inputClassName = classNames(
