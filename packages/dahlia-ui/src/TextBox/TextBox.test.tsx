@@ -8,7 +8,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
-import { ComponentProps } from 'react';
+import React, { ComponentProps } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { TextBox, TextBoxHF } from './TextBox';
@@ -28,20 +28,26 @@ test('renders TextBox', () => {
 
 // React Hook Form 対応
 const userSchema = z.object({
-  name: z.string().max(5, '5文字以内で入力してください。'),
+  name: z.string({ description: '5文字以内で入力してください。' }).max(5),
   age: z.number(),
 });
 
 type User = z.infer<typeof userSchema>;
 
-const HFTest = () => {
+const HFTest = (props: { hasError?: boolean }) => {
   const { control, watch } = useForm<User>({
     mode: 'onBlur',
     resolver: zodResolver(userSchema),
   });
   return (
     <>
-      <TextBoxHF control={control} name="name" label="名前" />
+      <TextBoxHF
+        control={control}
+        name="name"
+        label="名前"
+        message={userSchema.shape.name.description}
+        hasError={props.hasError}
+      />
       <div data-testid="name-value">{JSON.stringify(watch())}</div>
     </>
   );
@@ -51,13 +57,26 @@ test('form input', async () => {
   _render(<HFTest />);
   expect(screen.getByTestId('label-text')).toHaveTextContent('名前');
   const input = screen.getByTestId('TextBox');
+  expect(input).not.toHaveClass('input-error');
+  const message = screen.getByTestId('message');
+  expect(message).not.toHaveClass('text-error');
+  expect(message).toHaveTextContent('5文字以内で入力してください。');
   fireEvent.change(input, { target: { value: 'test' } });
   expect(screen.getByTestId('name-value')).toHaveTextContent('test');
   fireEvent.change(input, { target: { value: 'test 123' } });
   fireEvent.focusOut(input);
   await waitFor(() => {
-    expect(screen.getByTestId('error-message')).toHaveTextContent(
-      '5文字以内で入力してください。',
-    );
+    expect(input).toHaveClass('input-error');
+    expect(message).toHaveClass('text-error');
   });
+});
+
+test('form input - force error', async () => {
+  _render(<HFTest hasError />);
+  expect(screen.getByTestId('label-text')).toHaveTextContent('名前');
+  const input = screen.getByTestId('TextBox');
+  expect(input).toHaveClass('input-error');
+  const message = screen.getByTestId('message');
+  expect(message).toHaveClass('text-error');
+  expect(message).toHaveTextContent('5文字以内で入力してください。');
 });

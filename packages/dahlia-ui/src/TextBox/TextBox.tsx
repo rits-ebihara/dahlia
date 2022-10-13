@@ -8,7 +8,8 @@ import {
 
 type Props = {
   label: string | JSX.Element;
-  errorMessage?: string | JSX.Element;
+  message?: string | JSX.Element;
+  hasError?: boolean;
   type?:
     | 'text'
     | 'number'
@@ -33,11 +34,12 @@ type Props = {
 export const TextBox: React.FC<Props> = props => {
   const {
     label,
-    errorMessage,
+    message,
     type = 'text',
     labelClassName = '',
     inputClassName = '',
     inputProps = {},
+    hasError = false,
     ...rest
   } = props;
 
@@ -47,11 +49,14 @@ export const TextBox: React.FC<Props> = props => {
 
   const _inputClassName = classNames(
     'input',
-    { 'input-error': errorMessage },
+    { 'input-error': hasError },
     inputClassName,
   );
 
   const _labelClassName = classNames('dahlia', 'label', labelClassName);
+  const _messageClassName = classNames('dahlia', 'label-text-alt', {
+    'text-error': hasError,
+  });
 
   return (
     <div {...rest}>
@@ -68,8 +73,8 @@ export const TextBox: React.FC<Props> = props => {
         data-testid="TextBox"
       />
       <label htmlFor={id} className="dahlia-TextBox label">
-        <span className="label-text-alt text-error" data-testid="error-message">
-          {errorMessage}
+        <span className={_messageClassName} data-testid="message">
+          {message}
         </span>
       </label>
     </div>
@@ -86,7 +91,8 @@ export const TextBoxHF = <T extends FieldValues>(props: HFProps<T>) => {
     rules,
     shouldUnregister,
     defaultValue,
-    errorMessage,
+    message,
+    hasError,
     ...rest
   } = props;
   const controller = useController({
@@ -109,9 +115,14 @@ export const TextBoxHF = <T extends FieldValues>(props: HFProps<T>) => {
   );
 
   const inputProps = { ...restField, onChange: _onChange };
-  console.log(inputProps);
-  const _errorMessage = errorMessage || controller.fieldState.error?.message;
+  const _hasError =
+    hasError === undefined ? !!controller.fieldState.error : hasError;
   return (
-    <TextBox inputProps={inputProps} errorMessage={_errorMessage} {...rest} />
+    <TextBox
+      inputProps={inputProps}
+      message={message}
+      hasError={_hasError}
+      {...rest}
+    />
   );
 };
