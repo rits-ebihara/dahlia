@@ -1,16 +1,19 @@
 {
-	"folders": [
-		{
-			"path": "packages/dahlia-next"
-		},
-		{
-			"path": "packages/dahlia-ui",
-			"name": "UI"
-		},
-		{
-			"path": ".",
-			"name": "ROOT"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "packages/dahlia-next"
+    },
+    {
+      "path": "packages/dahlia-ui",
+      "name": "UI"
+    },
+    {
+      "path": "packages/dahlia-d3"
+    },
+    {
+      "path": ".",
+      "name": "ROOT"
+    }
+  ],
+  "settings": {}
 }
