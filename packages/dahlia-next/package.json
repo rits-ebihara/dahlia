@@ -19,7 +19,7 @@
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
